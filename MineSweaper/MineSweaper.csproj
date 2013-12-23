@@ -17,7 +17,6 @@
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="default.htm" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
