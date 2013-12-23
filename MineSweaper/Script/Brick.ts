@@ -8,9 +8,16 @@ class Brick {
     public coordinate : Coordinate
     public adjacentBricks: Array<Brick>;
    
-    constructor() {
+    constructor(x?: number, y?: number) {
         this.type = BrickType.Unknown;
         this.state = BrickState.Unknown;
         this.adjacentBricks = new Array<Brick>();
+
+        if (x != undefined && y != undefined) {
+            this.coordinate = {
+                x: x,
+                y: y
+            };
+        }
     }
 }
