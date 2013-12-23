@@ -1,9 +1,9 @@
-interface IBoard {
+interface IRepo {
     tryGetBrick(coordinate: Coordinate, output : Brick): boolean;
 
 }
 
-class Board implements IBoard{
+class BrickRepository implements IRepo{
 
     width : number;
     height : number;

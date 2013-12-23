@@ -1,8 +1,8 @@
 /// <reference path="../../Script/BrickFlipper.ts"/>
-/// <reference path="../../Script/Board.ts"/>
+/// <reference path="../../Script/BrickRepository.ts"/>
 
-describe("The Board", () => {
-    var board: Board,
+describe("The BrickRepository", () => {
+    var repo: BrickRepository,
         brick : Brick,
         size: BoardSize,
         coordinate: Coordinate;
@@ -18,19 +18,19 @@ describe("The Board", () => {
 
         it("Should set width from size in constructor", () => {
             /* Test*/
-            board = new Board(size);
+            repo = new BrickRepository(size);
             
             /* Assert */
-            expect(board.width).toEqual(size.boardWidth);
+            expect(repo.width).toEqual(size.boardWidth);
         });
 
 
         it("Should set height from size in constructor", () => {
             /* Test*/
-            board = new Board(size);
+            repo = new BrickRepository(size);
 
             /* Assert */
-            expect(board.height).toEqual(size.boardHeight);
+            expect(repo.height).toEqual(size.boardHeight);
         });
     });
 
@@ -42,7 +42,7 @@ describe("The Board", () => {
                 boardHeight: 10,
             };
 
-            board = new Board(size);
+            repo = new BrickRepository(size);
         });
 
         it("Should return 'false' if no Brick on that coordinate", ()=> {
@@ -52,7 +52,7 @@ describe("The Board", () => {
                 y: 123
             };
             /* Test*/
-            var result = board.tryGetBrick(coordinate, brick);
+            var result = repo.tryGetBrick(coordinate, brick);
 
             /* Assert */
             expect(result).toBeFalsy();
