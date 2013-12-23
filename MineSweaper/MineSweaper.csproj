@@ -17,15 +17,31 @@
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Jasmine\jasmine-html.js" />
+    <Content Include="Jasmine\jasmine.js" />
+    <Content Include="Jasmine\Runner\jasmine.css" />
+    <Content Include="Jasmine\Runner\jasmine_favicon.png" />
+    <Content Include="Jasmine\Runner\Runner.html" />
+    <Content Include="Jasmine\Specifications\BrickFlipperSpecifications.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Jasmine\Specifications\BrickFlipperSpecifications.js.map" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
     <None Include="web.Release.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Jasmine\Specifications\BrickFlipperSpecifications.ts" />
+    <TypeScriptCompile Include="Jasmine\typings\jasmine\jasmine.d.ts" />
+    <TypeScriptCompile Include="Script\Brick.ts" />
+    <TypeScriptCompile Include="Script\BrickFlipper.ts" />
+    <TypeScriptCompile Include="Script\BrickState.ts" />
+    <TypeScriptCompile Include="Script\BrickType.ts" />
+    <TypeScriptCompile Include="Script\Coordinate.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
