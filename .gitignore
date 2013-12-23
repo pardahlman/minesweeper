@@ -10,7 +10,8 @@ TestResults
 
 # TypeScript generated files
 */Script/*.js
-*/Script/*.js.map
+**Specifications.js
+**.js.map
 
 # User-specific files
 *.suo
