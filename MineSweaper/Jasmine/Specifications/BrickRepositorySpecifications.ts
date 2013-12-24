@@ -7,14 +7,16 @@ describe("The BrickRepository", () => {
         size: BoardSize,
         coordinate: Coordinate;
 
+    beforeEach(() => {
+        /* Setup */
+        size = {
+            boardWidth: 11,
+            boardHeight: 10,
+        };
+    });
+
     describe("The size of the board", ()=> {
-        beforeEach(()=> {
-            /* Setup */
-            size = {
-                boardWidth: 11,
-                boardHeight: 10,
-            };
-        });
+        
 
         it("Should set width from size in constructor", () => {
             /* Test*/
@@ -146,6 +148,46 @@ describe("The BrickRepository", () => {
 
             /* Assert */
             expect(result.coordinate).toEqual(coordinate);
+        });
+    });
+
+    describe("The 'getRandomBrick' method", ()=> {
+        it("Should use Math's 'random' to get brick", ()=> {
+            /* Setup */
+            repo = new BrickRepository(size);
+            spyOn(Math, 'random').andCallThrough();
+            
+            /* Test */
+            repo.getRandomBrick();
+
+            /* Assert */
+            expect(Math.random).toHaveBeenCalled();
+        });
+
+        it("Should return the first brick when random returns 0", ()=> {
+            /* Setup */
+            repo = new BrickRepository(size);
+            spyOn(Math, 'random').andReturn(0);
+
+            /* Test */
+            var result = repo.getRandomBrick();
+
+            /* Assert */
+            expect(result.coordinate.x).toEqual(0);
+            expect(result.coordinate.y).toEqual(0);
+        });
+
+        it("Should return the last brick when random returns max value", () => {
+            /* Setup */
+            repo = new BrickRepository(size);
+            spyOn(Math, 'random').andReturn(0.99999999999999);
+
+            /* Test */
+            var result = repo.getRandomBrick();
+
+            /* Assert */
+            expect(result.coordinate.x).toEqual(size.boardWidth -1);
+            expect(result.coordinate.y).toEqual(size.boardHeight -1);
         });
     });
 });

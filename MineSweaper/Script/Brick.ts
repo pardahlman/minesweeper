@@ -14,7 +14,8 @@ class Brick {
         this.adjacentBricks = new Array<Brick>();
 
         if (x != undefined && y != undefined) {
-            this.coordinate = {
+            this.coordinate =
+            {
                 x: x,
                 y: y
             };

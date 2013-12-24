@@ -1,6 +1,6 @@
 interface IRepo {
-    containsBrickAt(coordinate: Coordinate, output : Brick): boolean;
-
+    containsBrickAt(coordinate: Coordinate): boolean;
+    getBrick(coordinate: Coordinate): Brick;
 }
 
 class BrickRepository implements IRepo{
@@ -44,6 +44,15 @@ class BrickRepository implements IRepo{
         }
 
         return this._bricks[coordinate.x][coordinate.y];
+    }
+
+    
+    getRandomBrick(): Brick {
+        var yIndex = Math.round(Math.random() * (this.width -1));
+        var xIndex = Math.round(Math.random() * (this.height -1));
+        
+
+        return this.getBrick({x: xIndex, y: yIndex});
     }
 
 
