@@ -47,6 +47,9 @@
     <TypeScriptCompile Include="Script\BrickType.ts" />
     <TypeScriptCompile Include="Script\Coordinate.ts" />
     <TypeScriptCompile Include="Script\BoardSize.ts" />
+    <TypeScriptCompile Include="Script\Game.ts" />
+    <TypeScriptCompile Include="Script\GameLevel.ts" />
+    <TypeScriptCompile Include="Script\GameSettings.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
