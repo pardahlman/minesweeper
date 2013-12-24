@@ -35,9 +35,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Jasmine\Specifications\BrickNumberAppenderSpecifications.ts" />
     <TypeScriptCompile Include="Jasmine\Specifications\BrickRepositorySpecifications.ts" />
     <TypeScriptCompile Include="Jasmine\Specifications\BrickFlipperSpecifications.ts" />
     <TypeScriptCompile Include="Jasmine\typings\jasmine\jasmine.d.ts" />
+    <TypeScriptCompile Include="Script\BrickNumberAppender.ts" />
     <TypeScriptCompile Include="Script\BrickRepository.ts" />
     <TypeScriptCompile Include="Script\Brick.ts" />
     <TypeScriptCompile Include="Script\BrickFlipper.ts" />

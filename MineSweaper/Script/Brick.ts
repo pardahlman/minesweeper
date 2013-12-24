@@ -7,6 +7,8 @@ class Brick {
     public state: BrickState;
     public coordinate : Coordinate
     public adjacentBricks: Array<Brick>;
+    
+    public numberOfNormalNeighbours : number;
    
     constructor(x?: number, y?: number) {
         this.type = BrickType.Unknown;
