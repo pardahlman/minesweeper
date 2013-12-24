@@ -3,7 +3,6 @@
 
 describe("The BrickRepository", () => {
     var repo: BrickRepository,
-        brick : Brick,
         size: BoardSize,
         coordinate: Coordinate;
 
@@ -16,7 +15,6 @@ describe("The BrickRepository", () => {
     });
 
     describe("The size of the board", ()=> {
-        
 
         it("Should set width from size in constructor", () => {
             /* Test*/
@@ -37,6 +35,7 @@ describe("The BrickRepository", () => {
     });
 
     describe("The 'containsBrickAt' method", () => {
+
         beforeEach(() => {
             /* Setup */
             size = {
@@ -108,6 +107,7 @@ describe("The BrickRepository", () => {
     });
 
     describe("The 'getBrick' method", () => {
+
         beforeEach(() => {
             /* Setup */
             size = {
@@ -152,7 +152,8 @@ describe("The BrickRepository", () => {
     });
 
     describe("The 'getRandomBrick' method", ()=> {
-        it("Should use Math's 'random' to get brick", ()=> {
+
+        it("Should use Math's 'random' to get brick", () => {
             /* Setup */
             repo = new BrickRepository(size);
             spyOn(Math, 'random').andCallThrough();
