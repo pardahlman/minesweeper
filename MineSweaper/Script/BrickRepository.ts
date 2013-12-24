@@ -26,7 +26,7 @@ class BrickRepository implements IRepo{
         }
     }
 
-    containsBrickAt(coordinate: Coordinate) : boolean {
+    public containsBrickAt(coordinate: Coordinate) : boolean {
 
         if (coordinate.x < 0 || this.width < coordinate.x) {
             return false;
@@ -39,7 +39,7 @@ class BrickRepository implements IRepo{
         return true;
     }
 
-    getBrick(coordinate: Coordinate): Brick {
+    public getBrick(coordinate: Coordinate): Brick {
         if (!this.containsBrickAt(coordinate)) {
             return undefined; 
         }
@@ -47,14 +47,14 @@ class BrickRepository implements IRepo{
         return this._bricks[coordinate.x][coordinate.y];
     }
     
-    getRandomBrick(): Brick {
+    public getRandomBrick(): Brick {
         var yIndex = Math.round(Math.random() * (this.width -1));
         var xIndex = Math.round(Math.random() * (this.height -1));
 
         return this.getBrick({x: xIndex, y: yIndex});
     }
 
-    getAllBricks(): Array<Brick> {
+    public getAllBricks(): Array<Brick> {
         var allBricks = new Array<Brick>();
         this._bricks.forEach(column=> allBricks = allBricks.concat(column));
         return allBricks;
