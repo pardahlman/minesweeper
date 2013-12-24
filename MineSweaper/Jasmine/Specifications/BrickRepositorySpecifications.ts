@@ -191,4 +191,18 @@ describe("The BrickRepository", () => {
             expect(result.coordinate.y).toEqual(size.boardHeight -1);
         });
     });
+
+    describe("The 'getAllBricks' method", ()=> {
+
+        it("Should return all bricks", () => {
+            /* Setup */
+            repo = new BrickRepository(size);
+
+            /* Test */
+            var result = repo.getAllBricks();
+
+            /* Assert */
+            expect(result.length).toEqual(size.boardWidth * size.boardHeight);
+        });
+    });
 });
