@@ -21,4 +21,6 @@ class GameSetupHelper {
 
         brick.numberOfNormalNeighbours = neighbourCount;
     }
+
+    
 } 

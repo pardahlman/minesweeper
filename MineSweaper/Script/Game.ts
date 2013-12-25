@@ -23,7 +23,14 @@ class Game {
         this._currentSettings = settings || Game._defaultSettings;
 
         this.repo.removeAllBricks();
-        GameSetupHelper.createBricks(this._currentSettings.size);
+        var newBricks = GameSetupHelper.createBricks(this._currentSettings.size);
+
+        newBricks.forEach(row=>
+            row.forEach(brick=>
+                GameSetupHelper.setNeighbourCountFor(brick)
+            )
+        );
+
         this.state = GameState.Ready;
     }
 } 

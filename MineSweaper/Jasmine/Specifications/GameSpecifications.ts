@@ -41,7 +41,7 @@ describe("The 'Game'", () => {
 
         it("Should create new bricks from BrickGenerator with the size-settings", ()=> {
             /* Setup */
-            spyOn(GameSetupHelper, 'createBricks');
+            spyOn(GameSetupHelper, 'createBricks').andCallThrough();
 
             /* Test */
             game.setup(settings);
@@ -51,7 +51,7 @@ describe("The 'Game'", () => {
         });
 
         it("Should use default settings if none supplied", ()=> {
-            spyOn(GameSetupHelper, 'createBricks');
+            spyOn(GameSetupHelper, 'createBricks').andCallThrough();
 
             /* Test */
             game.setup();
@@ -70,6 +70,29 @@ describe("The 'Game'", () => {
             /* Assert */
             expect(repo.removeAllBricks).toHaveBeenCalled();
 
+        });
+
+        it("Should append number to all bricks", ()=> {
+            /* Setup */
+            var firstBrick = new Brick(1, 1);
+            var secondBrick = new Brick(1, 1);
+            var thirdBrick = new Brick(1, 1);
+
+            var mockedResponse: Array<Array<Brick>> = [
+                [firstBrick, secondBrick],
+                [thirdBrick]
+            ];
+
+            spyOn(GameSetupHelper, 'createBricks').andReturn(mockedResponse);
+            spyOn(GameSetupHelper, 'setNeighbourCountFor');
+
+            /* Test */
+            game.setup(settings);
+
+            /* Assert */
+            expect(GameSetupHelper.setNeighbourCountFor).toHaveBeenCalledWith(firstBrick);
+            expect(GameSetupHelper.setNeighbourCountFor).toHaveBeenCalledWith(secondBrick);
+            expect(GameSetupHelper.setNeighbourCountFor).toHaveBeenCalledWith(thirdBrick);
         });
     });
 });
