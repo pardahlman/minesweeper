@@ -12,6 +12,18 @@ describe("The BrickRepository", () => {
             boardWidth: 11,
             boardHeight: 10,
         };
+
+        repo = new BrickRepository(size);
+    });
+
+    describe("The 'removeAllBricks' method", ()=> {
+        it("Should remove all current bricks", ()=> {
+            /* Test */
+            repo.removeAllBricks();
+
+            /* Assert */
+            expect(repo.getAllBricks().length).toBe(0);
+        });
     });
 
     describe("The size of the board", ()=> {

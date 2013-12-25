@@ -26,6 +26,11 @@ class BrickRepository implements IRepo{
         }
     }
 
+    public removeAllBricks(): void {
+
+        this._bricks = new Array<Array<Brick>>();
+    }
+
     public containsBrickAt(coordinate: Coordinate) : boolean {
 
         if (coordinate.x < 0 || this.width < coordinate.x) {
