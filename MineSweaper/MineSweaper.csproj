@@ -39,6 +39,7 @@
     <TypeScriptCompile Include="Jasmine\Specifications\BrickNumberAppenderSpecifications.ts" />
     <TypeScriptCompile Include="Jasmine\Specifications\BrickRepositorySpecifications.ts" />
     <TypeScriptCompile Include="Jasmine\Specifications\BrickFlipperSpecifications.ts" />
+    <TypeScriptCompile Include="Jasmine\Specifications\GameSpecifications.ts" />
     <TypeScriptCompile Include="Jasmine\typings\jasmine\jasmine.d.ts" />
     <TypeScriptCompile Include="Script\BrickGenerator.ts" />
     <TypeScriptCompile Include="Script\BrickNumberAppender.ts" />
@@ -52,6 +53,7 @@
     <TypeScriptCompile Include="Script\Game.ts" />
     <TypeScriptCompile Include="Script\GameLevel.ts" />
     <TypeScriptCompile Include="Script\GameSettings.ts" />
+    <TypeScriptCompile Include="Script\GameState.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
