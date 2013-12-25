@@ -1,12 +1,15 @@
 describe("The 'Game'", () => {
     var game: Game,
-        settings: GameSettings;
+        settings: GameSettings,
+        repo: BrickRepository;
+
+    beforeEach(()=> {
+        repo = new BrickRepository({ boardWidth: 10, boardHeight: 10 });
+        game = new Game(repo);
+    });
 
     describe("The 'state' of the Game", ()=> {
         it("Should be 'NotStarted' upon instansiating", ()=> {
-            /* Setup */
-            game = new Game();
-
             /* Test */
             var result = game.state;
 
@@ -15,9 +18,6 @@ describe("The 'Game'", () => {
         });
 
         it("Should be 'Ready' after setup is performed", () => {
-            /* Setup */
-            game = new Game();
-
             /* Test */
             game.setup();
 
@@ -41,7 +41,6 @@ describe("The 'Game'", () => {
 
         it("Should create new bricks from BrickGenerator with the size-settings", ()=> {
             /* Setup */
-            game = new Game();
             spyOn(BrickGenerator, 'createBricks');
 
             /* Test */
@@ -52,7 +51,6 @@ describe("The 'Game'", () => {
         });
 
         it("Should use default settings if none supplied", ()=> {
-            game = new Game();
             spyOn(BrickGenerator, 'createBricks');
 
             /* Test */
@@ -60,6 +58,18 @@ describe("The 'Game'", () => {
 
             /* Assert */
             expect(BrickGenerator.createBricks).toHaveBeenCalledWith(Game._defaultSettings.size);
+        });
+
+        it("Should remove all bricks from the brick repo", ()=> {
+            /* Setup */
+            spyOn(repo, 'removeAllBricks');
+
+            /* Test */
+            game.setup(settings);
+
+            /* Assert */
+            expect(repo.removeAllBricks).toHaveBeenCalled();
+
         });
     });
 });
