@@ -41,23 +41,23 @@ describe("The 'Game'", () => {
 
         it("Should create new bricks from BrickGenerator with the size-settings", ()=> {
             /* Setup */
-            spyOn(BrickGenerator, 'createBricks');
+            spyOn(GameSetupHelper, 'createBricks');
 
             /* Test */
             game.setup(settings);
 
             /* Assert */
-            expect(BrickGenerator.createBricks).toHaveBeenCalledWith(settings.size);
+            expect(GameSetupHelper.createBricks).toHaveBeenCalledWith(settings.size);
         });
 
         it("Should use default settings if none supplied", ()=> {
-            spyOn(BrickGenerator, 'createBricks');
+            spyOn(GameSetupHelper, 'createBricks');
 
             /* Test */
             game.setup();
 
             /* Assert */
-            expect(BrickGenerator.createBricks).toHaveBeenCalledWith(Game._defaultSettings.size);
+            expect(GameSetupHelper.createBricks).toHaveBeenCalledWith(Game._defaultSettings.size);
         });
 
         it("Should remove all bricks from the brick repo", ()=> {

@@ -23,7 +23,7 @@ class Game {
         this._currentSettings = settings || Game._defaultSettings;
 
         this.repo.removeAllBricks();
-        BrickGenerator.createBricks(this._currentSettings.size);
+        GameSetupHelper.createBricks(this._currentSettings.size);
         this.state = GameState.Ready;
     }
 } 

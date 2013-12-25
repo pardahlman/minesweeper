@@ -1,4 +1,4 @@
-class BrickGenerator {
+class GameSetupHelper {
     public static createBricks(size: BoardSize): Array<Array<Brick>> {
 
         var bricks = new Array<Array<Brick>>();
