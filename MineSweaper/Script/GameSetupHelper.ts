@@ -13,4 +13,12 @@ class GameSetupHelper {
 
         return bricks;
     }
+
+    public static setNeighbourCountFor(brick: Brick): void {
+        var neighbourCount = brick.adjacentBricks
+            .filter(b => b.type == BrickType.Normal)
+            .length;
+
+        brick.numberOfNormalNeighbours = neighbourCount;
+    }
 } 

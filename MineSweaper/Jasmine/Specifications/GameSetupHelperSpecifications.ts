@@ -1,5 +1,6 @@
 describe("The 'GameSetupHelper'", ()=> {
-    var bricks: Array<Array<Brick>>,
+    var brick: Brick,
+        bricks: Array<Array<Brick>>,
         size: BoardSize;
 
     beforeEach(()=> {
@@ -37,6 +38,59 @@ describe("The 'GameSetupHelper'", ()=> {
 
             /* Assert */
             expect(bricks[0].length).toBe(size.boardHeight);
+        });
+    });
+
+    describe("The 'getNeighbourCount' method", () => {
+
+        beforeEach(()=> {
+            brick = new Brick();
+        });
+
+        it("Should set 'setNeighbourCountFor(Brick)' to zero if no neighours'", () => {
+            /* Setup */
+            brick.adjacentBricks = new Array<Brick>();
+
+            /* Test */
+            GameSetupHelper.setNeighbourCountFor(brick);
+
+            /* Assert */
+            expect(brick.numberOfNormalNeighbours).toEqual(0);
+        });
+
+        it("Should set 'numberOfNormalNeighbours' to zero if all neighbours are bombs", () => {
+            /* Setup */
+            var bomb = new Brick();
+            bomb.type = BrickType.Bomb;
+
+            brick.adjacentBricks.push(bomb);
+            brick.adjacentBricks.push(bomb);
+            brick.adjacentBricks.push(bomb);
+
+            /* Test */
+            GameSetupHelper.setNeighbourCountFor(brick);
+
+            /* Assert */
+            expect(brick.numberOfNormalNeighbours).toEqual(0);
+        });
+
+        it("Should return correct amount when neighbours are both bombs and normal bricks", () => {
+            /* Setup */
+            var bomb = new Brick();
+            bomb.type = BrickType.Bomb;
+
+            var normal = new Brick();
+            normal.type = BrickType.Normal;
+
+            brick.adjacentBricks.push(bomb);
+            brick.adjacentBricks.push(normal);
+            brick.adjacentBricks.push(normal);
+
+            /* Test */
+            GameSetupHelper.setNeighbourCountFor(brick);
+
+            /* Assert */
+            expect(brick.numberOfNormalNeighbours).toEqual(2);
         });
     });
 });
