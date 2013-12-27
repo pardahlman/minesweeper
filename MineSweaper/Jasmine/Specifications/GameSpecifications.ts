@@ -77,11 +77,15 @@ describe("The 'Game'", () => {
             var firstBrick = new Brick(1, 1);
             var secondBrick = new Brick(1, 1);
             var thirdBrick = new Brick(1, 1);
+            var fourthBrick = new Brick(1, 1);
 
             var mockedResponse: Array<Array<Brick>> = [
                 [firstBrick, secondBrick],
-                [thirdBrick]
+                [thirdBrick, fourthBrick]
             ];
+
+            settings.size.boardHeight = 2;
+            settings.size.boardWidth = 2;
 
             spyOn(GameSetupHelper, 'createBricks').andReturn(mockedResponse);
             spyOn(GameSetupHelper, 'setNeighbourCountFor');
@@ -93,6 +97,7 @@ describe("The 'Game'", () => {
             expect(GameSetupHelper.setNeighbourCountFor).toHaveBeenCalledWith(firstBrick);
             expect(GameSetupHelper.setNeighbourCountFor).toHaveBeenCalledWith(secondBrick);
             expect(GameSetupHelper.setNeighbourCountFor).toHaveBeenCalledWith(thirdBrick);
+            expect(GameSetupHelper.setNeighbourCountFor).toHaveBeenCalledWith(fourthBrick);
         });
     });
 });
