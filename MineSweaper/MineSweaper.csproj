@@ -39,6 +39,7 @@
     <TypeScriptCompile Include="Jasmine\Specifications\BrickFlipperSpecifications.ts" />
     <TypeScriptCompile Include="Jasmine\Specifications\GameSpecifications.ts" />
     <TypeScriptCompile Include="Jasmine\typings\jasmine\jasmine.d.ts" />
+    <TypeScriptCompile Include="Script\ArrayExtensions.ts" />
     <TypeScriptCompile Include="Script\GameSetupHelper.ts" />
     <TypeScriptCompile Include="Script\BrickRepository.ts" />
     <TypeScriptCompile Include="Script\Brick.ts" />
