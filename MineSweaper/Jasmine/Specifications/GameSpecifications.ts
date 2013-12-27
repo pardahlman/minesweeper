@@ -72,6 +72,17 @@ describe("The 'Game'", () => {
 
         });
 
+        it("Should add bombs to the bricks", () => {
+            /* Setup */
+            spyOn(GameSetupHelper, 'addBombs');
+
+            /* Test */
+            game.setup(settings);
+
+            /* Assert */
+            expect(GameSetupHelper.addBombs).toHaveBeenCalled();
+        });
+
         it("Should append number to all bricks", ()=> {
             /* Setup */
             var firstBrick = new Brick(1, 1);
