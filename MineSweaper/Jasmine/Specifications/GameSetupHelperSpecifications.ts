@@ -93,4 +93,42 @@ describe("The 'GameSetupHelper'", ()=> {
             expect(brick.numberOfNormalNeighbours).toEqual(2);
         });
     });
+
+    describe("The 'addBombs' method", ()=> {
+        it("Should throw error if argument is undefined", ()=> {
+            /* Assert */
+            expect(()=> GameSetupHelper.addBombs(undefined , 0 )).toThrow();
+        });
+
+        it("Should throw error if argument is null", () => {
+            /* Assert */
+            expect(() => GameSetupHelper.addBombs(null, 0)).toThrow();
+        });
+
+        it("Should throw error if total number of bricks is less than desired number of bombs", ()=> {
+            /* Setup */
+            bricks = [
+                [new Brick(), new Brick(), new Brick()],
+                [new Brick(), new Brick(), new Brick()]
+            ];
+
+            var numberOfBombs = 10;
+
+            /* Assert */
+            expect(() => GameSetupHelper.addBombs(bricks, numberOfBombs)).toThrow();
+        });
+
+        it("Shoud convert right amount of bricks to bombs", ()=> {
+            /* Setup */
+            bricks = [
+                [new Brick(), new Brick(), new Brick()]
+            ];
+            
+            /* Test */
+            GameSetupHelper.addBombs(bricks, 2);
+
+            /* Assert */
+            expect(bricks[0].filter(b=> b.type == BrickType.Bomb).length).toBe(2);
+        });
+    });
 });

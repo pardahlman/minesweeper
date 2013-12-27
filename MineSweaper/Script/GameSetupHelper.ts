@@ -22,5 +22,34 @@ class GameSetupHelper {
         brick.numberOfNormalNeighbours = neighbourCount;
     }
 
+    public static addBombs(bricks: Array<Array<Brick>>, numberOfBombs: number): void {
+        if (bricks == undefined) {
+            throw new Error();
+        }
+
+        var totalNumberOfBricks = bricks.length * bricks[0].length;
+
+        if (numberOfBombs < 0 || totalNumberOfBricks < numberOfBombs) {
+            throw new Error("Cannot create bombs, number of desired bombs is to big or small.");
+        }
+
+        var flatList = new Array <Brick>();
+        bricks.forEach(row=>
+            row.forEach(brick=>
+                flatList.push(brick)
+            )
+        );
+
+        flatList.shuffle();
+        
+        var bombList = flatList.slice(0, numberOfBombs);
+        bombList.forEach(bomb=>
+            bomb.type = BrickType.Bomb
+        );
+
+        
+    }
+  
     
-} 
+}
+
