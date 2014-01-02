@@ -19,11 +19,9 @@ class Game {
      }
 
     public setup(settings?: GameSettings): void {
-        
+        this.repo.removeAllBricks(); //TODO: remove this
+
         this._currentSettings = settings || Game._defaultSettings;
-
-        this.repo.removeAllBricks();
-
         var newBricks = GameSetupHelper.createBricks(this._currentSettings.size);
 
         // Create bombs
@@ -39,6 +37,14 @@ class Game {
 
 
         this.state = GameState.Ready;
+    }
+
+    public flip(brick: Brick): void {
+        // if game state is ready, start timer and start game
+        // check if brick is bomb, and if so set game state to game over
+        // flip brick if not allready flipped
+        // flip neighbours if brick has normal neighbours
+        
     }
 
     private getBombCount (settings: GameSettings) : number {
