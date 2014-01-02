@@ -49,20 +49,16 @@ describe("The 'GameSetupHelper'", ()=> {
             /* Assert */
             expect(bricks[xCoordinate][yCoordinate].coordinate.x).toBe(xCoordinate);
             expect(bricks[xCoordinate][yCoordinate].coordinate.y).toBe(yCoordinate);
-        })
+        });
     });
 
     describe("The 'setBrickRelations' method", ()=> {
         beforeEach(()=> {
             bricks = GameSetupHelper.createBricks(size);
+            GameSetupHelper.setBrickRelations(bricks);
         });
 
-        it("Should set correct neighbours for top corner brick", ()=> {
-            /* Setup */
-
-            /* Test */
-            GameSetupHelper.setBrickRelations(bricks);
-
+        it("Should set correct neighbours for left top corner brick", ()=> {
             /* Assert */
 
             // hack to get the toContain to work -- we get a circular reference otherwise
@@ -74,6 +70,25 @@ describe("The 'GameSetupHelper'", ()=> {
             expect(bricks[0][0].adjacentBricks).toContain(bricks[0][1]);
             expect(bricks[0][0].adjacentBricks).toContain(bricks[1][1]);
             expect(bricks[0][0].adjacentBricks).toContain(bricks[0][1]);
+        });
+
+        it("Should set correct neighbours for top right corner brick", () => {
+            /* Assert */
+            var leftNeighbour = bricks[size.boardWidth - 2][size.boardHeight - 1];
+            var verticalNeighbour = bricks[size.boardWidth - 2][size.boardHeight - 2];
+            var belowNeighbour = bricks[size.boardWidth - 1][size.boardHeight - 2];
+
+            // hack to get the toContain to work -- we get a circular reference otherwise
+            leftNeighbour.adjacentBricks = new Array<Brick>();
+            verticalNeighbour.adjacentBricks = new Array<Brick>();
+            belowNeighbour.adjacentBricks = new Array<Brick>();
+
+            var topRight = bricks[size.boardWidth - 1][size.boardHeight - 1];
+
+            expect(topRight.adjacentBricks.length).toEqual(3);
+            expect(topRight.adjacentBricks).toContain(leftNeighbour);
+            expect(topRight.adjacentBricks).toContain(verticalNeighbour);
+            expect(topRight.adjacentBricks).toContain(belowNeighbour);
         });
     });
 

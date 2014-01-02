@@ -1,3 +1,4 @@
+/// <reference path="../../Librarys/typings/underscore/underscore.d.ts"/>
 class GameSetupHelper {
     public static createBricks(size: BoardSize): Array<Array<Brick>> {
 
@@ -33,19 +34,27 @@ class GameSetupHelper {
             var potentialXCoordinates = [currentBrick.coordinate.x - 1, currentBrick.coordinate.x, currentBrick.coordinate.x + 1];
             var potentialYCoordinates = [currentBrick.coordinate.y - 1, currentBrick.coordinate.y, currentBrick.coordinate.y + 1];
 
-            _.forEach(potentialXCoordinates, xCoordnaite=> {
+            _.forEach(potentialXCoordinates, xCoordinate=> {
+
+                if (xCoordinate < minX || maxX < xCoordinate) {
+                    // The x coordinate is out of bound
+                    console.log("Bailing out on x " + xCoordinate);
+                    return;
+                }
+
                 _.forEach(potentialYCoordinates, yCoordinate=> {
-                    if (yCoordinate < minY || maxY < yCoordinate ||  xCoordnaite < minX || maxX < xCoordnaite) {
-                        // The coordinates are out of bound
+                    if (yCoordinate < minY || maxY < yCoordinate) {
+                        // The y coordinate are out of bound
+                        console.log("Bailing out on y " + yCoordinate);
                         return;
                     }
 
-                    if (yCoordinate == currentBrick.coordinate.y && xCoordnaite == currentBrick.coordinate.x) {
-                        // Thie coordinates are for the current brick
+                    if (yCoordinate == currentBrick.coordinate.y && xCoordinate == currentBrick.coordinate.x) {
+                        // These coordinates are for the current brick
                         return;
                     }
 
-                    var neighbour = bricks[xCoordnaite][yCoordinate];
+                    var neighbour = bricks[xCoordinate][yCoordinate];
                     currentBrick.adjacentBricks.push(neighbour);
                     
                 });
