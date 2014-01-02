@@ -7,7 +7,7 @@ class GameSetupHelper {
             var currentColumn = new Array<Brick>();
             bricks.push(currentColumn);
             for (var rowIndex = 0; rowIndex < size.boardHeight; rowIndex++) {
-                currentColumn.push(new Brick(rowIndex, columnIndex));
+                currentColumn.push(new Brick(columnIndex,rowIndex));
             }
         }
 

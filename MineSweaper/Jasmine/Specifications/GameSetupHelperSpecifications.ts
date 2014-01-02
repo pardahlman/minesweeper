@@ -38,6 +38,18 @@ describe("The 'GameSetupHelper'", ()=> {
             /* Assert */
             expect(bricks[0].length).toBe(size.boardHeight);
         });
+
+        it("Should set right coordinate values on Bricks", ()=> {
+            /* Setup */
+            var xCoordinate = 7;
+            var yCoordinate = 9;
+            /* Test */
+            bricks = GameSetupHelper.createBricks(size);
+
+            /* Assert */
+            expect(bricks[xCoordinate][yCoordinate].coordinate.x).toBe(xCoordinate);
+            expect(bricks[xCoordinate][yCoordinate].coordinate.y).toBe(yCoordinate);
+        })
     });
 
     describe("The 'setBrickRelations' method", ()=> {
