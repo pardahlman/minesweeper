@@ -56,6 +56,17 @@ describe("The BrickVm", () => {
                 /* Assert */
                 expect(model.DisplayText()).toEqual(numberOfNeighbourts.toString());
             });
+
+            it("Should be the 'B' for bomb", () => {
+                /* Setup */
+                brick.type = BrickType.Bomb;
+
+                /* Test */
+                model = new BrickViewModel(brick);
+
+                /* Assert */
+                expect(model.DisplayText()).toEqual("B");
+            });
         });
     });
 });
