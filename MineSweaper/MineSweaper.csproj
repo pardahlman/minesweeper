@@ -44,7 +44,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Jasmine\Specifications\BrickViewModelSpecification.ts" />
+    <TypeScriptCompile Include="Jasmine\Specifications\BrickViewModelSpecifications.ts" />
     <TypeScriptCompile Include="Jasmine\Specifications\GameSetupHelperSpecifications.ts" />
     <TypeScriptCompile Include="Jasmine\Specifications\BrickRepositorySpecifications.ts" />
     <TypeScriptCompile Include="Jasmine\Specifications\BrickFlipperSpecifications.ts" />
