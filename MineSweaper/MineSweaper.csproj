@@ -67,6 +67,7 @@
     <TypeScriptCompile Include="Script\Core\GameSettings.ts" />
     <TypeScriptCompile Include="Script\Core\GameState.ts" />
     <TypeScriptCompile Include="Script\Presentation\BrickViewModel.ts" />
+    <TypeScriptCompile Include="Script\Presentation\GlobalResources.ts" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
