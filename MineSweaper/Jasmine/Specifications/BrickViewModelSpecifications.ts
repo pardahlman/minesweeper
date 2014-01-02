@@ -35,7 +35,22 @@ describe("The BrickVm", () => {
                 model = new BrickViewModel(brick);
 
                 /* Assert */
-                expect(model.DisplayText()).toEqual("?");
+                expect(model.DisplayText()).toEqual("flagged");
+            });
+        });
+
+        describe("When brick is facing down", () => {
+
+            beforeEach(() => {
+                brick.state = BrickState.FacingDown;
+            });
+
+            it("Should be a 'facingDown' if the brick is flagged", () => {
+                /* Test */
+                model = new BrickViewModel(brick);
+
+                /* Assert */
+                expect(model.DisplayText()).toEqual("facingDown");
             });
         });
 
@@ -57,7 +72,7 @@ describe("The BrickVm", () => {
                 expect(model.DisplayText()).toEqual(numberOfNeighbourts.toString());
             });
 
-            it("Should be the 'B' for bomb", () => {
+            it("Should be the 'boom' for bomb", () => {
                 /* Setup */
                 brick.type = BrickType.Bomb;
 
@@ -65,7 +80,7 @@ describe("The BrickVm", () => {
                 model = new BrickViewModel(brick);
 
                 /* Assert */
-                expect(model.DisplayText()).toEqual("B");
+                expect(model.DisplayText()).toEqual("boom");
             });
         });
     });

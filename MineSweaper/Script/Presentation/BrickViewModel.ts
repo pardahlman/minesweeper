@@ -5,14 +5,16 @@ class BrickViewModel {
 
     public State: KnockoutObservable<BrickState> = ko.observable(BrickState.Unknown);
     public DisplayText: KnockoutComputed<string> = ko.computed(() => {
-
+        if (this.State() == BrickState.FacingDown) {
+            return "facingDown";
+        }
         if (this.State() == BrickState.Flagged) {
-            return "?";
+            return "flagged";
         }
 
         if (this.State() == BrickState.FacingUp) {
             if (this._brick.type == BrickType.Bomb) {
-                return "B";
+                return "boom";
             }
 
             return this._brick.numberOfNormalNeighbours.toString();
