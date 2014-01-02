@@ -14,6 +14,7 @@ class Brick {
         this.type = BrickType.Unknown;
         this.state = BrickState.Unknown;
         this.adjacentBricks = new Array<Brick>();
+        this.numberOfNormalNeighbours = 0;
 
         if (x != undefined && y != undefined) {
             this.coordinate =
