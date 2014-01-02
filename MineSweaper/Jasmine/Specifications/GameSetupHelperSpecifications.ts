@@ -1,7 +1,7 @@
 describe("The 'GameSetupHelper'", ()=> {
     var brick: Brick,
         bricks: Array<Array<Brick>>,
-        size: BoardSize;
+            size: BoardSize;
 
     beforeEach(()=> {
         size = {
@@ -9,7 +9,6 @@ describe("The 'GameSetupHelper'", ()=> {
             boardWidth: 8
         };
     });
-
 
     describe("The 'createBricks' method", ()=> {
         it("Should return empty array if size is empty", ()=> {
@@ -38,6 +37,31 @@ describe("The 'GameSetupHelper'", ()=> {
 
             /* Assert */
             expect(bricks[0].length).toBe(size.boardHeight);
+        });
+    });
+
+    describe("The 'setBrickRelations' method", ()=> {
+        beforeEach(()=> {
+            bricks = GameSetupHelper.createBricks(size);
+        });
+
+        it("Should set correct neighbours for top corner brick", ()=> {
+            /* Setup */
+
+            /* Test */
+            GameSetupHelper.setBrickRelations(bricks);
+
+            /* Assert */
+
+            // hack to get the toContain to work -- we get a circular reference otherwise
+            bricks[0][1].adjacentBricks = new Array<Brick>();
+            bricks[1][1].adjacentBricks = new Array<Brick>();
+            bricks[0][1].adjacentBricks = new Array<Brick>();
+
+            expect(bricks[0][0].adjacentBricks.length).toEqual(3);
+            expect(bricks[0][0].adjacentBricks).toContain(bricks[0][1]);
+            expect(bricks[0][0].adjacentBricks).toContain(bricks[1][1]);
+            expect(bricks[0][0].adjacentBricks).toContain(bricks[0][1]);
         });
     });
 
