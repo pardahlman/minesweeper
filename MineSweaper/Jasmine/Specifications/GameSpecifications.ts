@@ -216,7 +216,7 @@ describe("The 'Game'", () => {
             expect(flipedNeighbours.length).toEqual(0);
         });
 
-        it("Should flip neighbours if all neighbours are normal", () => {
+        it("Should flip neighbours if brick and all neighbours are normal", () => {
             /* Setup */
             game.state = GameState.Ongoing;
             brick.type = BrickType.Normal;
@@ -228,6 +228,40 @@ describe("The 'Game'", () => {
             /* Assert */
             var flipedNeighbours = brick.adjacentBricks.filter(neighbour=> neighbour.state == BrickState.FacingUp);
             expect(flipedNeighbours.length).toEqual(brick.adjacentBricks.length);
+        });
+
+
+        it("Should not flip neighbours that is flagged, even if all are normal", () => {
+            /* Setup */
+            game.state = GameState.Ongoing;
+            brick.type = BrickType.Normal;
+            brick.adjacentBricks.forEach(b => b.type = BrickType.Normal);
+            var flaggedBrick = brick.adjacentBricks[0];
+            flaggedBrick.state = BrickState.Flagged;
+
+            /* Test */
+            game.flip(brick);
+
+            /* Assert */
+            expect(flaggedBrick.state).toEqual(BrickState.Flagged);
+        });
+
+        it("Should set game state to Finnished if all bricks are flipped", ()=> {
+            /* Setup */
+            // All brick facing down but 'brick'
+            game.bricks.forEach(row=>
+                row.forEach(b=> {
+                    b.type = BrickType.Normal;
+                        b.state = BrickState.FacingUp;
+                    })
+                );
+            brick.state = BrickState.FacingDown;
+
+            /* Test */
+            game.flip(brick);
+
+            /* Assert */
+            expect(game.state).toEqual(GameState.Finnished);
         });
     });
 });

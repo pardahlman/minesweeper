@@ -55,8 +55,8 @@ class Game {
             return;
         }
 
-        // flip brick if not allready flipped
-        if (brick.state == BrickState.FacingUp) {
+        // flip brick if not allready flipped or flagged
+        if (brick.state == BrickState.FacingUp || brick.state == BrickState.Flagged)  {
             return;
         }
         brick.state = BrickState.FacingUp;
@@ -73,6 +73,11 @@ class Game {
         if (!hasBombNeighbour) {
             brick.adjacentBricks.forEach(neighbour => this.flip(neighbour));
         }
-        // check if victory conditions are met
+
+        // check if victory conditions are met, and if so change game state
+        var hasUnflippedBricks = _.any(this.bricks, row=> _.any(row, b=> b.state == BrickState.FacingDown));
+        if (!hasUnflippedBricks) {
+            this.state = GameState.Finnished;
+        }
     }
 } 
