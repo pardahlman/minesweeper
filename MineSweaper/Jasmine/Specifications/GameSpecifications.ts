@@ -123,4 +123,111 @@ describe("The 'Game'", () => {
             expect(GameSetupHelper.setNeighbourCountFor).toHaveBeenCalledWith(fourthBrick);
         });
     });
+
+    describe("The 'flip' method", () => {
+        var brick: Brick;
+
+        beforeEach(()=> {
+            game.setup();
+            brick = game.bricks[1][1];
+        });
+
+        it("Should set game state to 'Ongoing' if state is 'Ready'", () => {
+            /* Setup */
+            game.state = GameState.Ready;
+
+            /* Test */
+            game.flip(brick);
+
+            /* Assert */
+            expect(game.state).toEqual(GameState.Ongoing);
+        });
+
+        it("Should not flip the brick if the state of the game is not correct", ()=> {
+            /* Setup */
+            game.state = GameState.Unknown;
+
+            /* Test */
+            game.flip(brick);
+
+            /* Assert */
+            expect(brick.state).toEqual(BrickState.FacingDown);
+        });
+
+        it("Should flip the brick if the state of the game is correct", () => {
+            /* Setup */
+            game.state = GameState.Ongoing;
+
+            /* Test */
+            game.flip(brick);
+
+            /* Assert */
+            expect(brick.state).toEqual(BrickState.FacingUp);
+        });
+
+        it("Should keep game state if flipped brick is not a bomb", () => {
+            /* Setup */
+            game.state = GameState.Ongoing;
+            brick.type = BrickType.Normal;
+
+            /* Test */
+            game.flip(brick);
+
+            /* Assert */
+            expect(game.state).toEqual(GameState.Ongoing);
+        });
+
+        it("Should change game state to Finnished if flipped brick is a bomb", () => {
+            /* Setup */
+            game.state = GameState.Ongoing;
+            brick.type = BrickType.Bomb;
+
+            /* Test */
+            game.flip(brick);
+
+            /* Assert */
+            expect(game.state).toEqual(GameState.Finnished);
+        });
+
+        it("Should not flip neighbours if brick is bomb", ()=> {
+            /* Setup */
+            game.state = GameState.Ongoing;
+            brick.type = BrickType.Bomb;
+
+            /* Test */
+            game.flip(brick);
+
+            /* Assert */
+            var flipedNeighbours = brick.adjacentBricks.filter(neighbour=> neighbour.state == BrickState.FacingUp);
+            expect(flipedNeighbours.length).toEqual(0);
+        });
+
+        it("Should not flip neighbours if brick has a bomb neighbour", () => {
+            /* Setup */
+            game.state = GameState.Ongoing;
+            brick.type = BrickType.Normal;
+            brick.adjacentBricks[0].type = BrickType.Bomb;
+
+            /* Test */
+            game.flip(brick);
+
+            /* Assert */
+            var flipedNeighbours = brick.adjacentBricks.filter(neighbour=> neighbour.state == BrickState.FacingUp);
+            expect(flipedNeighbours.length).toEqual(0);
+        });
+
+        it("Should flip neighbours if all neighbours are normal", () => {
+            /* Setup */
+            game.state = GameState.Ongoing;
+            brick.type = BrickType.Normal;
+            brick.adjacentBricks.forEach(b=> b.type = BrickType.Normal);
+
+            /* Test */
+            game.flip(brick);
+
+            /* Assert */
+            var flipedNeighbours = brick.adjacentBricks.filter(neighbour=> neighbour.state == BrickState.FacingUp);
+            expect(flipedNeighbours.length).toEqual(brick.adjacentBricks.length);
+        });
+    });
 });

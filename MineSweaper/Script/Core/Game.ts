@@ -47,9 +47,32 @@ class Game {
 
     public flip(brick: Brick): void {
         // if game state is ready, start timer and start game
-        // check if brick is bomb, and if so set game state to game over
+        if (this.state == GameState.Ready) {
+            this.state = GameState.Ongoing;
+        }
+
+        if (this.state != GameState.Ongoing) {
+            return;
+        }
+
         // flip brick if not allready flipped
-        // flip neighbours if brick has normal neighbours
+        if (brick.state == BrickState.FacingUp) {
+            return;
+        }
+        brick.state = BrickState.FacingUp;
         
+        // check if brick is bomb, and if so set game state to game over
+        if (brick.type == BrickType.Bomb) {
+            this.state = GameState.Finnished;
+        }
+
+        // flip neighbours if brick has only normal neighbours
+        var hasBombNeighbour = brick.adjacentBricks
+                                        .filter(neighbour=> neighbour.type == BrickType.Bomb)
+                                        .length != 0;
+        if (!hasBombNeighbour) {
+            brick.adjacentBricks.forEach(neighbour => this.flip(neighbour));
+        }
+        // check if victory conditions are met
     }
 } 
