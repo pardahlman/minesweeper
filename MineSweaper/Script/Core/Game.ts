@@ -29,7 +29,7 @@ class Game {
         this.bricks = newBricks;
 
         // Convert some of them to bombs
-        var numberOfBombs = this.getBombCount(this._currentSettings);
+        var numberOfBombs = GameSetupHelper.getNumberOfBombs(this._currentSettings);
         GameSetupHelper.addBombs(newBricks, numberOfBombs);
 
         // Connect bricks so that they get neighbours
@@ -51,27 +51,5 @@ class Game {
         // flip brick if not allready flipped
         // flip neighbours if brick has normal neighbours
         
-    }
-
-    private getBombCount (settings: GameSettings) : number {
-        var numberOfBricks = settings.size.boardHeight * settings.size.boardWidth;
-        var gameLevelFactor: number;
-
-        switch (settings.level) {
-            case GameLevel.Easy:
-                gameLevelFactor = 0.1;
-                break;
-            case GameLevel.Medium:
-                gameLevelFactor = 0.3;
-                break;
-            case GameLevel.Hard:
-                gameLevelFactor = 0.4;
-                break;
-            default:
-                gameLevelFactor = 0.1;
-                break;
-        }
-
-        return Math.round(numberOfBricks * gameLevelFactor);
     }
 } 

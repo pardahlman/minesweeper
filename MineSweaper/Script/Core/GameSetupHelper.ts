@@ -71,6 +71,28 @@ class GameSetupHelper {
         brick.numberOfNormalNeighbours = neighbourCount;
     }
 
+    public static getNumberOfBombs(settings: GameSettings): number {
+        var numberOfBricks = settings.size.boardHeight * settings.size.boardWidth;
+        var gameLevelFactor: number;
+
+        switch (settings.level) {
+            case GameLevel.Easy:
+                gameLevelFactor = 0.1;
+                break;
+            case GameLevel.Medium:
+                gameLevelFactor = 0.3;
+                break;
+            case GameLevel.Hard:
+                gameLevelFactor = 0.4;
+                break;
+            default:
+                gameLevelFactor = 0.1;
+                break;
+        }
+
+        return Math.round(numberOfBricks * gameLevelFactor);
+    }
+
     public static addBombs(bricks: Array<Array<Brick>>, numberOfBombs: number): void {
         if (bricks == undefined) {
             throw new Error();
