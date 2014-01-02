@@ -1,16 +1,20 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-  "http://www.w3.org/TR/html4/loose.dtd">
+          "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>Jasmine Spec Runner</title>
+    <title>Jasmine Spec Runner</title>
 
-	<link rel="shortcut icon" type="image/png" href="jasmine_favicon.png">
-	<link rel="stylesheet" type="text/css" href="jasmine.css">
+    <link rel="shortcut icon" type="image/png" href="jasmine_favicon.png">
+    <link rel="stylesheet" type="text/css" href="jasmine.css">
     
+    <!--   Libs -->
+    <script type="text/javascript" src="../../Librarys/knockout-3.0.0.debug.js"></script>
+    
+
     <!-- Jasmine Libs -->
     <script type="text/javascript" src="../jasmine.js"></script>
-	<script type="text/javascript" src="../jasmine-html.js"></script>
-    
+    <script type="text/javascript" src="../jasmine-html.js"></script>
+
     <!-- True script classes -->
     <script type="text/javascript" src="../../Script/Core/ArrayExtensions.js"></script>
     <script type="text/javascript" src="../../Script/Core/BoardSize.js"></script>
@@ -29,41 +33,45 @@
     <script type="text/javascript" src="../../Script/Core/Game.js"></script>
     <script type="text/javascript" src="../../Script/Core/GameSetupHelper.js"></script>
 
+    <script type="text/javascript" src="../../Script/Presentation/BrickViewModel.js"></script>
+
     <!-- Specifications (sorted alphabetically) -->
     <script type="text/javascript" src="../Specifications/BrickFlipperSpecifications.js"></script>
     <script type="text/javascript" src="../Specifications/BrickRepositorySpecifications.js"></script>
     <script type="text/javascript" src="../Specifications/GameSpecifications.js"></script>
     <script type="text/javascript" src="../Specifications/GameSetupHelperSpecifications.js"></script>
 
+    <script type="text/javascript" src="../Specifications/BrickViewModelSpecification.js"></script>
+
 
     <!-- Test runner setup -->
-	<script type="text/javascript">
-		(function () {
-			var jasmineEnv = jasmine.getEnv();
-			jasmineEnv.updateInterval = 1000;
+    <script type="text/javascript">
+        (function () {
+            var jasmineEnv = jasmine.getEnv();
+            jasmineEnv.updateInterval = 1000;
 
-			var htmlReporter = new jasmine.HtmlReporter();
-			jasmineEnv.addReporter(htmlReporter);
+            var htmlReporter = new jasmine.HtmlReporter();
+            jasmineEnv.addReporter(htmlReporter);
 
-			jasmineEnv.specFilter = function (spec) {
-				return htmlReporter.specFilter(spec);
-			};
+            jasmineEnv.specFilter = function (spec) {
+                return htmlReporter.specFilter(spec);
+            };
 
-			var currentWindowOnload = window.onload;
+            var currentWindowOnload = window.onload;
 
-			window.onload = function () {
-				if (currentWindowOnload) {
-					currentWindowOnload();
-				}
-				execJasmine();
-			};
+            window.onload = function () {
+                if (currentWindowOnload) {
+                    currentWindowOnload();
+                }
+                execJasmine();
+            };
 
-			function execJasmine() {
-				jasmineEnv.execute();
-			}
+            function execJasmine() {
+                jasmineEnv.execute();
+            }
 
-		})();
-	</script>
+        })();
+    </script>
 </head>
 
 <body>
