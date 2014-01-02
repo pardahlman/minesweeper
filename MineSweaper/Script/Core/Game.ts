@@ -1,6 +1,7 @@
 class Game {
     public repo: BrickRepository;
     public state: GameState;
+    public bricks : Array<Array<Brick>>;
 
     public static _defaultSettings: GameSettings =
     {
@@ -22,19 +23,24 @@ class Game {
         this.repo.removeAllBricks(); //TODO: remove this
 
         this._currentSettings = settings || Game._defaultSettings;
+        
+        // Create Bricks
         var newBricks = GameSetupHelper.createBricks(this._currentSettings.size);
+        this.bricks = newBricks;
 
-        // Create bombs
+        // Convert some of them to bombs
         var numberOfBombs = this.getBombCount(this._currentSettings);
         GameSetupHelper.addBombs(newBricks, numberOfBombs);
 
+        // Connect bricks so that they get neighbours
+        GameSetupHelper.setBrickRelations(newBricks);
 
+        // Set "normal neghbour" count for bricks
         newBricks.forEach(row=>
             row.forEach(brick=>
                 GameSetupHelper.setNeighbourCountFor(brick)
             )
         );
-
 
         this.state = GameState.Ready;
     }

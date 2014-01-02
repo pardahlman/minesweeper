@@ -83,6 +83,18 @@ describe("The 'Game'", () => {
             expect(GameSetupHelper.addBombs).toHaveBeenCalled();
         });
 
+        it("Should populate the neighbour array", ()=> {
+            /* Setup */
+            spyOn(GameSetupHelper, 'setBrickRelations').andCallThrough();
+
+            /* Test */
+            game.setup(settings);
+
+            /* Assert */
+            expect(GameSetupHelper.setBrickRelations).toHaveBeenCalled();
+            expect(game.bricks[0][0].adjacentBricks.length).not.toEqual(0);
+        });
+
         it("Should append number to all bricks", ()=> {
             /* Setup */
             var firstBrick = new Brick(1, 1);
