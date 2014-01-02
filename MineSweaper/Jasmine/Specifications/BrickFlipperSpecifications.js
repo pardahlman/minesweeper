@@ -1,5 +1,3 @@
-/// <reference path="../../Script/BrickFlipper.ts"/>
-/// <reference path="../../Script/Brick.ts"/>
 describe("The BrickFlipper", function () {
     it("Should be defined", function () {
         expect(BrickFlipper).toBeDefined();

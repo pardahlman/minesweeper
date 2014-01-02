@@ -23,9 +23,19 @@
     <Content Include="Jasmine\Runner\jasmine_favicon.png" />
     <Content Include="Jasmine\Runner\Runner.html" />
     <Content Include="Jasmine\Specifications\BrickFlipperSpecifications.js" />
+    <Content Include="packages.config" />
+    <None Include="Librarys\jquery-2.0.3.intellisense.js" />
+    <Content Include="Librarys\jquery-2.0.3.js" />
+    <Content Include="Librarys\jquery-2.0.3.min.js" />
+    <Content Include="Librarys\knockout-3.0.0.debug.js" />
+    <Content Include="Librarys\knockout-3.0.0.js" />
+    <Content Include="Librarys\underscore.js" />
+    <Content Include="Librarys\underscore.min.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Librarys\jquery-2.0.3.min.map" />
+    <Content Include="Librarys\underscore.min.map" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -38,20 +48,26 @@
     <TypeScriptCompile Include="Jasmine\Specifications\BrickRepositorySpecifications.ts" />
     <TypeScriptCompile Include="Jasmine\Specifications\BrickFlipperSpecifications.ts" />
     <TypeScriptCompile Include="Jasmine\Specifications\GameSpecifications.ts" />
-    <TypeScriptCompile Include="TypeScriptTypings\jasmine\jasmine.d.ts" />
-    <TypeScriptCompile Include="Script\ArrayExtensions.ts" />
-    <TypeScriptCompile Include="Script\GameSetupHelper.ts" />
-    <TypeScriptCompile Include="Script\BrickRepository.ts" />
-    <TypeScriptCompile Include="Script\Brick.ts" />
-    <TypeScriptCompile Include="Script\BrickFlipper.ts" />
-    <TypeScriptCompile Include="Script\BrickState.ts" />
-    <TypeScriptCompile Include="Script\BrickType.ts" />
-    <TypeScriptCompile Include="Script\Coordinate.ts" />
-    <TypeScriptCompile Include="Script\BoardSize.ts" />
-    <TypeScriptCompile Include="Script\Game.ts" />
-    <TypeScriptCompile Include="Script\GameLevel.ts" />
-    <TypeScriptCompile Include="Script\GameSettings.ts" />
-    <TypeScriptCompile Include="Script\GameState.ts" />
+    <TypeScriptCompile Include="Librarys\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Librarys\typings\knockout\knockout.d.ts" />
+    <TypeScriptCompile Include="Librarys\typings\underscore\underscore.d.ts" />
+    <TypeScriptCompile Include="Librarys\typings\jasmine\jasmine.d.ts" />
+    <TypeScriptCompile Include="Script\Core\ArrayExtensions.ts" />
+    <TypeScriptCompile Include="Script\Core\GameSetupHelper.ts" />
+    <TypeScriptCompile Include="Script\Core\BrickRepository.ts" />
+    <TypeScriptCompile Include="Script\Core\Brick.ts" />
+    <TypeScriptCompile Include="Script\Core\BrickFlipper.ts" />
+    <TypeScriptCompile Include="Script\Core\BrickState.ts" />
+    <TypeScriptCompile Include="Script\Core\BrickType.ts" />
+    <TypeScriptCompile Include="Script\Core\Coordinate.ts" />
+    <TypeScriptCompile Include="Script\Core\BoardSize.ts" />
+    <TypeScriptCompile Include="Script\Core\Game.ts" />
+    <TypeScriptCompile Include="Script\Core\GameLevel.ts" />
+    <TypeScriptCompile Include="Script\Core\GameSettings.ts" />
+    <TypeScriptCompile Include="Script\Core\GameState.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Script\Presentation\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

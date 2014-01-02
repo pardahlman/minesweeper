@@ -1,6 +1,3 @@
-/// <reference path="../../Script/BrickFlipper.ts"/>
-/// <reference path="../../Script/BrickRepository.ts"/>
-
 describe("The BrickRepository", () => {
     var repo: BrickRepository,
         size: BoardSize,
