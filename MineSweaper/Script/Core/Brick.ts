@@ -12,7 +12,7 @@ class Brick {
    
     constructor(x?: number, y?: number) {
         this.type = BrickType.Unknown;
-        this.state = BrickState.Unknown;
+        this.state = BrickState.FacingDown;
         this.adjacentBricks = new Array<Brick>();
         this.numberOfNormalNeighbours = 0;
 
