@@ -10,7 +10,7 @@
     <p> Gamestate: <span data-bind="text: Global.gameStateText[State()]"></span></p>
     <table id="gameGrid" data-bind="foreach: BricksVms">
         <tr data-bind="foreach: $data">
-            <td data-bind="click: $parents[1].flip, css :{'boom' : HasExploded, 'facingDown' : State() == 2}, event: { contextmenu: $parents[1].flag }">
+            <td data-bind="click: $parents[1].handleClick, css :{'boom' : HasExploded, 'facingDown' : State() == 2}, event: { contextmenu: $parents[1].flag }">
                 <span data-bind="text: Global.brickStateText[DisplayText()]"></span>
             </td>
         </tr>
@@ -47,7 +47,7 @@
         $(document).ready(function () {
             gameVm = new GameViewModel();
             ko.applyBindings(gameVm, document.getElementById("gameElement"));
-            gameVm.Setup()
+            gameVm.Setup();
         });
     </script>
 </body>

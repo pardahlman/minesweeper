@@ -1,8 +1,8 @@
 class GameViewModel {
     private _game: Game = new Game();
 
-    public flip: (brickVm: BrickViewModel)=> void;
     public flag: (brickVm: BrickViewModel)=> void;
+    public handleClick : (brickVm: BrickViewModel, event: JQueryEventObject) => void;
     public Setup: () => void;
 
 
@@ -41,8 +41,12 @@ class GameViewModel {
 
         };
 
-        this.flip = (currentBrickVm: BrickViewModel)=> {
-            this._game.flip(currentBrickVm.Brick);
+        this.handleClick = (vm, event)=> {
+            if (event.ctrlKey)
+                this.flag(vm);
+            else {
+                this._game.flip(vm.Brick);
+            }
         };
 
         this.flag = (currentBrickVm)=> this._game.toggleFlag(currentBrickVm.Brick);
