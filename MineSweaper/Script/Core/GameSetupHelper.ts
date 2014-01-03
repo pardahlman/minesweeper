@@ -38,14 +38,12 @@ class GameSetupHelper {
 
                 if (xCoordinate < minX || maxX < xCoordinate) {
                     // The x coordinate is out of bound
-                    console.log("Bailing out on x " + xCoordinate);
                     return;
                 }
 
                 _.forEach(potentialYCoordinates, yCoordinate=> {
                     if (yCoordinate < minY || maxY < yCoordinate) {
                         // The y coordinate are out of bound
-                        console.log("Bailing out on y " + yCoordinate);
                         return;
                     }
 
