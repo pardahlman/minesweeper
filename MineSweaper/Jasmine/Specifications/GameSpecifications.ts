@@ -293,4 +293,77 @@ describe("The 'Game'", () => {
             expect(brick.state).toEqual(BrickState.FacingDown);
         });
     });
+
+    describe("The 'expandCoveredArea' function", ()=> {
+        var brick: Brick,
+            bomb: Brick;
+
+        beforeEach(() => {
+            game.setup();
+
+            brick = game.bricks[1][1];
+            brick.type = BrickType.Normal;
+            brick.state = BrickState.FacingUp;
+            brick.numberOfNormalNeighbours = 1;
+
+            brick.adjacentBricks.forEach(n=> {
+                n.type = BrickType.Normal;
+                n.adjacentBricks = [];
+            });
+
+            bomb = brick.adjacentBricks[0];
+            bomb.type = BrickType.Bomb;
+            bomb.state = BrickState.Flagged;
+        });
+
+        it("Should  flip bricks neighbours if brick all neighbours are evaluated", () => {
+            /* Setup */
+            // as above, one bomb neighbour correctly flagged
+
+            /* Test */
+            game.expandCoveredArea(brick);
+
+            /* Assert */
+            var numberOfFlipedNeigbours = brick.adjacentBricks.filter(n=> n.state == BrickState.FacingUp).length;
+            expect(numberOfFlipedNeigbours).toEqual(brick.adjacentBricks.length -1);
+        });
+
+        it("Should set game state to finnished if wrongly flagged brick", ()=> {
+            /* Setup */
+            bomb.state = BrickState.FacingDown;
+            brick.adjacentBricks[1].state = BrickState.Flagged;
+
+            /* Test */
+            game.expandCoveredArea(brick);
+
+            /* Assert */
+            expect(game.state).toEqual(GameState.Finnished);
+        });
+
+        it("Should not flip bricks neighbours if brick is not facing up", ()=> {
+            /* Setup */
+            brick.state = BrickState.FacingDown;
+
+            /* Test */
+            game.expandCoveredArea(brick);
+
+            /* Assert */
+            var numberOfFlipedNeigbours = brick.adjacentBricks.filter(n=> n.state == BrickState.FacingUp).length;
+            expect(numberOfFlipedNeigbours).toEqual(0);
+        });
+
+        it("Should not flip bricks neighbours if brick has neighbours that are not evaluated", () => {
+            /* Setup */
+            bomb.state = BrickState.FacingDown;
+
+            /* Test */
+            game.expandCoveredArea(brick);
+
+            /* Assert */
+            var numberOfFlipedNeigbours = brick.adjacentBricks.filter(n=> n.state == BrickState.FacingUp).length;
+            expect(numberOfFlipedNeigbours).toEqual(0);
+        });
+
+        
+    });
 });

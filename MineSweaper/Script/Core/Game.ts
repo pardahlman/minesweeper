@@ -97,6 +97,19 @@ class Game {
                 brick.state = BrickState.FacingDown;
             break;
         }
+    }
 
+    public expandCoveredArea(brick: Brick) {
+        if (brick.state != BrickState.FacingUp) {
+            return;
+        }
+
+        var numberOfFlaggedNeighbours = brick.adjacentBricks.filter(n=> n.state == BrickState.Flagged).length;
+        var hasUnevaluatedNeighbours = (brick.numberOfNormalNeighbours - numberOfFlaggedNeighbours) > 0;
+        if (hasUnevaluatedNeighbours) {
+            return;
+        }
+
+        brick.adjacentBricks.forEach(n=> this.flip(n));
     }
 } 
