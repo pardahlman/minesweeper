@@ -251,4 +251,46 @@ describe("The 'Game'", () => {
             expect(game.state).toEqual(GameState.Finnished);
         });
     });
+
+    describe("The 'toggleFlag' method", () => {
+        var brick: Brick;
+
+        beforeEach(() => {
+            game.setup();
+            brick = game.bricks[1][1];
+        });
+
+        it("Should not flag if brick is not facing down", ()=> {
+            /* Setup */
+            brick.state = BrickState.FacingUp;
+
+            /* Test */
+            game.toggleFlag(brick);
+
+            /* Assert */
+            expect(brick.state).toEqual(BrickState.FacingUp);
+        });
+
+        it("Should flag if brick is facing down", () => {
+            /* Setup */
+            brick.state = BrickState.FacingDown;
+
+            /* Test */
+            game.toggleFlag(brick);
+
+            /* Assert */
+            expect(brick.state).toEqual(BrickState.Flagged);
+        });
+
+        it("Should turn flagged brick to facing Down", ()=> {
+            /* Setup */
+            brick.state = BrickState.Flagged;
+
+            /* Test */
+            game.toggleFlag(brick);
+
+            /* Assert */
+            expect(brick.state).toEqual(BrickState.FacingDown);
+        });
+    });
 });

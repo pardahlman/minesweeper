@@ -87,4 +87,16 @@ class Game {
             this.state = GameState.Finnished;
         }
     }
+
+    public toggleFlag(brick: Brick) {
+        switch (brick.state) {
+        case BrickState.FacingDown:
+            brick.state = BrickState.Flagged;
+            break;
+            case BrickState.Flagged:
+                brick.state = BrickState.FacingDown;
+            break;
+        }
+
+    }
 } 

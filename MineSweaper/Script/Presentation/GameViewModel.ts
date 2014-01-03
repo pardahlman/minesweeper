@@ -2,7 +2,9 @@ class GameViewModel {
     private _game: Game = new Game();
 
     public flip: (brickVm: BrickViewModel)=> void;
-    public Setup: ()=> void;
+    public flag: (brickVm: BrickViewModel)=> void;
+    public Setup: () => void;
+
 
     public BricksVms = ko.observableArray(new Array<Array<BrickViewModel>>());
     public State: KnockoutObservable<GameState> = ko.observable(GameState.Unknown);
@@ -42,5 +44,7 @@ class GameViewModel {
         this.flip = (currentBrickVm: BrickViewModel)=> {
             this._game.flip(currentBrickVm.Brick);
         };
+
+        this.flag = (currentBrickVm)=> this._game.toggleFlag(currentBrickVm.Brick);
     }
 }
