@@ -43,7 +43,7 @@ class GameViewModel {
 
         this.handleClick = (vm, event)=> {
             if (event.ctrlKey)
-                this.flag(vm);
+                this._game.expandCoveredArea(vm.Brick);
             else {
                 this._game.flip(vm.Brick);
             }
