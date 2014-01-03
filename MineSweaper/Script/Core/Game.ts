@@ -14,14 +14,12 @@ class Game {
 
     private _currentSettings : GameSettings;
 
-     constructor(repo : BrickRepository) {
+     constructor(repo? : BrickRepository) {
          this.state = GameState.NotStarted;
          this.repo = repo;
      }
 
     public setup(settings?: GameSettings): void {
-        this.repo.removeAllBricks(); //TODO: remove this
-
         this._currentSettings = settings || Game._defaultSettings;
         
         // Create Bricks
