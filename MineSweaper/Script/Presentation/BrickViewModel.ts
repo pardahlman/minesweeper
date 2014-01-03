@@ -4,6 +4,10 @@ class BrickViewModel {
     public  Brick: Brick;
 
     public State: KnockoutObservable<BrickState> = ko.observable(BrickState.Unknown);
+    public HasExploded : KnockoutComputed<boolean> = ko.computed(()=> {
+        return (this.State() == BrickState.FacingUp && this.Brick.type == BrickType.Bomb);
+    })
+
     public DisplayText: KnockoutComputed<string> = ko.computed(() => {
         if (this.State() == BrickState.FacingDown) {
             return "facingDown";
