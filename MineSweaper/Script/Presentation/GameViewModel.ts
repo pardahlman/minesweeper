@@ -45,12 +45,6 @@ class GameViewModel {
             if (this.State() != this._game.state) {
                 this.State(this._game.state);
             }
-
-            this.BricksVms().forEach(row => row.forEach(brickVm=> {
-                if (brickVm.Brick.state != brickVm.State()) {
-                    brickVm.State(brickVm.Brick.state);
-                }
-            }));
         };
     }
 }

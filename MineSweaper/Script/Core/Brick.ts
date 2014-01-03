@@ -3,16 +3,26 @@
 ///<reference path="BrickState.ts"/>
 
 class Brick {
+    private _state: BrickState;
+
     public type: BrickType;
-    public state: BrickState;
     public coordinate : Coordinate
     public adjacentBricks: Array<Brick>;
-    
     public numberOfNormalNeighbours : number;
+    public onStateChanged : (newValue : BrickState) => void;
    
+    public set state(newValue: BrickState) {
+        this._state = newValue;
+        if (this.onStateChanged != undefined)
+            this.onStateChanged(newValue);
+    }
+    public get state() {
+        return this._state;
+    }
+
     constructor(x?: number, y?: number) {
         this.type = BrickType.Unknown;
-        this.state = BrickState.FacingDown;
+        this._state = BrickState.FacingDown;
         this.adjacentBricks = new Array<Brick>();
         this.numberOfNormalNeighbours = 0;
 

@@ -25,5 +25,6 @@ class BrickViewModel {
     constructor(brick: Brick) {
         this.Brick = brick;
         this.State(brick.state);
+        brick.onStateChanged = newValue => this.State(newValue);
     }
 } 
