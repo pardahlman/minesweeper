@@ -22,6 +22,7 @@
     <Content Include="Jasmine\Runner\jasmine.css" />
     <Content Include="Jasmine\Runner\jasmine_favicon.png" />
     <Content Include="Jasmine\Runner\Runner.html" />
+    <Content Include="minesweeper.css" />
     <Content Include="packages.config" />
     <None Include="Librarys\jquery-2.0.3.intellisense.js" />
     <Content Include="Librarys\jquery-2.0.3.js" />

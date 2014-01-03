@@ -1,17 +1,17 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-
+        <link rel="stylesheet" href="minesweeper.css"/>
         <title>Mine Sweeper</title>
 
     </head>
 <body id="gameElement">
     <button data-bind="click : Setup">Starta</button>
     <p> Gamestate: <span data-bind="text: Global.gameStateText[State()]"></span></p>
-    <table data-bind="foreach: BricksVms">
+    <table id="gameGrid" data-bind="foreach: BricksVms">
         <tr data-bind="foreach: $data">
-            <td>
-                <span data-bind="text: DisplayText, click: $parents[1].flip"></span>
+            <td data-bind="click: $parents[1].flip, css :{'boom' : HasExploded, 'facingDown' : State() == 2}">
+                <span data-bind="text: Global.brickStateText[DisplayText()]"></span>
             </td>
         </tr>
     </table>
@@ -47,6 +47,7 @@
         $(document).ready(function () {
             gameVm = new GameViewModel();
             ko.applyBindings(gameVm, document.getElementById("gameElement"));
+            gameVm.Setup()
         });
     </script>
 </body>
