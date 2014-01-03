@@ -66,7 +66,7 @@ class GameSetupHelper {
             .filter(b => b.type == BrickType.Bomb)
             .length;
 
-        brick.numberOfNormalNeighbours = neighbourCount;
+        brick.numberOfBombNeighbours = neighbourCount;
     }
 
     public static getNumberOfBombs(settings: GameSettings): number {

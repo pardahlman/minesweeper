@@ -105,7 +105,7 @@ class Game {
         }
 
         var numberOfFlaggedNeighbours = brick.adjacentBricks.filter(n=> n.state == BrickState.Flagged).length;
-        var hasUnevaluatedNeighbours = (brick.numberOfNormalNeighbours - numberOfFlaggedNeighbours) > 0;
+        var hasUnevaluatedNeighbours = (brick.numberOfBombNeighbours - numberOfFlaggedNeighbours) > 0;
         if (hasUnevaluatedNeighbours) {
             return;
         }

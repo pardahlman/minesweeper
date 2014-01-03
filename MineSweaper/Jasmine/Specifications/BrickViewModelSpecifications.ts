@@ -63,7 +63,7 @@ describe("The BrickVm", () => {
                 /* Setup */
                 var numberOfNeighbourts = 3;
                 brick.type = BrickType.Normal;
-                brick.numberOfNormalNeighbours = numberOfNeighbourts;
+                brick.numberOfBombNeighbours = numberOfNeighbourts;
                 
                 /* Test */
                 model = new BrickViewModel(brick);

@@ -176,7 +176,7 @@ describe("The 'GameSetupHelper'", ()=> {
             GameSetupHelper.setNeighbourCountFor(brick);
 
             /* Assert */
-            expect(brick.numberOfNormalNeighbours).toEqual(0);
+            expect(brick.numberOfBombNeighbours).toEqual(0);
         });
 
         it("Should set 'numberOfNormalNeighbours' to zero if all neighbours are normal", () => {
@@ -192,7 +192,7 @@ describe("The 'GameSetupHelper'", ()=> {
             GameSetupHelper.setNeighbourCountFor(brick);
 
             /* Assert */
-            expect(brick.numberOfNormalNeighbours).toEqual(0);
+            expect(brick.numberOfBombNeighbours).toEqual(0);
         });
 
         it("Should return correct amount when neighbours are both bombs and normal bricks", () => {
@@ -211,7 +211,7 @@ describe("The 'GameSetupHelper'", ()=> {
             GameSetupHelper.setNeighbourCountFor(brick);
 
             /* Assert */
-            expect(brick.numberOfNormalNeighbours).toEqual(1);
+            expect(brick.numberOfBombNeighbours).toEqual(1);
         });
     });
 

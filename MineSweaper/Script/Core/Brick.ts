@@ -8,7 +8,7 @@ class Brick {
     public type: BrickType;
     public coordinate : Coordinate
     public adjacentBricks: Array<Brick>;
-    public numberOfNormalNeighbours : number;
+    public numberOfBombNeighbours : number;
     public onStateChanged : (newValue : BrickState) => void;
    
     public set state(newValue: BrickState) {
@@ -24,7 +24,7 @@ class Brick {
         this.type = BrickType.Unknown;
         this._state = BrickState.FacingDown;
         this.adjacentBricks = new Array<Brick>();
-        this.numberOfNormalNeighbours = 0;
+        this.numberOfBombNeighbours = 0;
 
         if (x != undefined && y != undefined) {
             this.coordinate =

@@ -21,7 +21,7 @@ class BrickViewModel {
                 return "boom";
             }
 
-            return this.Brick.numberOfNormalNeighbours.toString();
+            return this.Brick.numberOfBombNeighbours.toString();
             }
             return "";
         });

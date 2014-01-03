@@ -304,7 +304,7 @@ describe("The 'Game'", () => {
             brick = game.bricks[1][1];
             brick.type = BrickType.Normal;
             brick.state = BrickState.FacingUp;
-            brick.numberOfNormalNeighbours = 1;
+            brick.numberOfBombNeighbours = 1;
 
             brick.adjacentBricks.forEach(n=> {
                 n.type = BrickType.Normal;
