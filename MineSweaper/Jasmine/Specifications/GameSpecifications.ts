@@ -1,11 +1,9 @@
 describe("The 'Game'", () => {
     var game: Game,
-        settings: GameSettings,
-        repo: BrickRepository;
+        settings: GameSettings;
 
     beforeEach(()=> {
-        repo = new BrickRepository({ boardWidth: 10, boardHeight: 10 });
-        game = new Game(repo);
+        game = new Game();
     });
 
     describe("The 'state' of the Game", ()=> {
@@ -58,18 +56,6 @@ describe("The 'Game'", () => {
 
             /* Assert */
             expect(GameSetupHelper.createBricks).toHaveBeenCalledWith(Game._defaultSettings.size);
-        });
-
-        it("Should remove all bricks from the brick repo", ()=> {
-            /* Setup */
-            spyOn(repo, 'removeAllBricks');
-
-            /* Test */
-            game.setup(settings);
-
-            /* Assert */
-            expect(repo.removeAllBricks).toHaveBeenCalled();
-
         });
 
         it("Should add bombs to the bricks", () => {

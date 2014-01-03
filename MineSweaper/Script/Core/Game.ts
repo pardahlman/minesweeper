@@ -1,5 +1,4 @@
 class Game {
-    public repo: BrickRepository;
     public state: GameState;
     public bricks : Array<Array<Brick>>;
 
@@ -14,9 +13,8 @@ class Game {
 
     private _currentSettings : GameSettings;
 
-     constructor(repo? : BrickRepository) {
+     constructor() {
          this.state = GameState.NotStarted;
-         this.repo = repo;
      }
 
     public setup(settings?: GameSettings): void {
