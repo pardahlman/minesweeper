@@ -63,7 +63,7 @@ class GameSetupHelper {
 
     public static setNeighbourCountFor(brick: Brick): void {
         var neighbourCount = brick.adjacentBricks
-            .filter(b => b.type == BrickType.Normal)
+            .filter(b => b.type == BrickType.Bomb)
             .length;
 
         brick.numberOfNormalNeighbours = neighbourCount;

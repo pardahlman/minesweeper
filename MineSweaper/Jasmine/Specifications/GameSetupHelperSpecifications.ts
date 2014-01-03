@@ -179,14 +179,14 @@ describe("The 'GameSetupHelper'", ()=> {
             expect(brick.numberOfNormalNeighbours).toEqual(0);
         });
 
-        it("Should set 'numberOfNormalNeighbours' to zero if all neighbours are bombs", () => {
+        it("Should set 'numberOfNormalNeighbours' to zero if all neighbours are normal", () => {
             /* Setup */
-            var bomb = new Brick();
-            bomb.type = BrickType.Bomb;
+            var normal = new Brick();
+            normal.type = BrickType.Normal;
 
-            brick.adjacentBricks.push(bomb);
-            brick.adjacentBricks.push(bomb);
-            brick.adjacentBricks.push(bomb);
+            brick.adjacentBricks.push(normal);
+            brick.adjacentBricks.push(normal);
+            brick.adjacentBricks.push(normal);
 
             /* Test */
             GameSetupHelper.setNeighbourCountFor(brick);
@@ -211,7 +211,7 @@ describe("The 'GameSetupHelper'", ()=> {
             GameSetupHelper.setNeighbourCountFor(brick);
 
             /* Assert */
-            expect(brick.numberOfNormalNeighbours).toEqual(2);
+            expect(brick.numberOfNormalNeighbours).toEqual(1);
         });
     });
 
