@@ -121,6 +121,7 @@ describe("The 'Game'", () => {
         it("Should set game state to 'Ongoing' if state is 'Ready'", () => {
             /* Setup */
             game.state = GameState.Ready;
+            brick.type = BrickType.Normal;
 
             /* Test */
             game.flip(brick);
