@@ -30,11 +30,15 @@
     <Content Include="Librarys\knockout-3.0.0.js" />
     <Content Include="Librarys\underscore.js" />
     <Content Include="Librarys\underscore.min.js" />
+    <Content Include="index.htm" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Librarys\jquery-2.0.3.min.map" />
     <Content Include="Librarys\underscore.min.map" />
+    <Content Include="Librarys\jquery-2.0.3.min.js.map">
+      <DependentUpon>jquery-2.0.3.js</DependentUpon>
+    </Content>
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

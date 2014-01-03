@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+
+        <title>Mine Sweeper</title>
+
+    </head>
+<body id="gameElement">
+    <button data-bind="click : Setup">Starta</button>
+
+    <table data-bind="foreach: BricksVms">
+        <tr data-bind="foreach: $data">
+            <td>
+                <span data-bind="text: DisplayText, click: $parents[1].flip"></span>
+            </td>
+        </tr>
+    </table>
+
+
+    <!--   Libs -->
+    <script type="text/javascript" src="Librarys/knockout-3.0.0.debug.js"></script>
+    <script type="text/javascript" src="Librarys/underscore.js"></script>
+    <script type="text/javascript" src="Librarys/jquery-2.0.3.js"></script>
+
+    <!-- True script classes -->
+    <script type="text/javascript" src="Script/Core/ArrayExtensions.js"></script>
+    <script type="text/javascript" src="Script/Core/BoardSize.js"></script>
+    <script type="text/javascript" src="Script/Core/Brick.js"></script>
+    <script type="text/javascript" src="Script/Core/BrickState.js"></script>
+    <script type="text/javascript" src="Script/Core/BrickType.js"></script>
+    <script type="text/javascript" src="Script/Core/Coordinate.js"></script>
+    <script type="text/javascript" src="Script/Core/GameLevel.js"></script>
+    <script type="text/javascript" src="Script/Core/GameSettings.js"></script>
+    <script type="text/javascript" src="Script/Core/GameState.js"></script>
+
+    <script type="text/javascript" src="Script/Core/BrickFlipper.js"></script>
+    <script type="text/javascript" src="Script/Core/BrickRepository.js"></script>
+    <script type="text/javascript" src="Script/Core/Game.js"></script>
+    <script type="text/javascript" src="Script/Core/GameSetupHelper.js"></script>
+
+    <script type="text/javascript" src="Script/Presentation/BrickViewModel.js"></script>
+    <script type="text/javascript" src="Script/Presentation/GameViewModel.js"></script>
+
+    <script>
+        var gameVm;
+        $(document).ready(function () {
+            gameVm = new GameViewModel();
+            ko.applyBindings(gameVm, document.getElementById("gameElement"));
+        });
+    </script>
+</body>
+
+</html>
