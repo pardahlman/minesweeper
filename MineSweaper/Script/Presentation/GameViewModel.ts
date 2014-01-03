@@ -5,7 +5,7 @@ class GameViewModel {
     public Setup: ()=> void;
 
     public BricksVms = ko.observableArray(new Array<Array<BrickViewModel>>());
-    public State: KnockoutObservable<GameState>;
+    public State: KnockoutObservable<GameState> = ko.observable(GameState.Unknown);
 
     public NumberOfRows: KnockoutObservable<number> = ko.observable(Game._defaultSettings.size.boardWidth);
     public NumberOfColumn: KnockoutObservable<number> = ko.observable(Game._defaultSettings.size.boardHeight);
@@ -22,9 +22,9 @@ class GameViewModel {
             };
 
             this._game.setup(settings);
+            this._game.onStateChanged = (newState)=> this.State(newState);
 
             this.BricksVms([]);
-            //this._game.bricks.forEach(row=> row.forEach(brick=> this.BricksVms.push(new BrickViewModel(brick))));
 
             _.each(this._game.bricks, row=> {
                 var currentRow = new Array<BrickViewModel>();
@@ -34,17 +34,13 @@ class GameViewModel {
                 });
                 this.BricksVms.push(currentRow);
             });
-            this.State = ko.observable(this._game.state);
-
+            this.State(this._game.state);
+            
 
         };
 
         this.flip = (currentBrickVm: BrickViewModel)=> {
             this._game.flip(currentBrickVm.Brick);
-
-            if (this.State() != this._game.state) {
-                this.State(this._game.state);
-            }
         };
     }
 }

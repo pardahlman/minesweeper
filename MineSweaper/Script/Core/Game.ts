@@ -1,5 +1,16 @@
 class Game {
-    public state: GameState;
+
+    public onStateChanged : (newState : GameState) => void;
+    private _state: GameState = GameState.Unknown;
+    public get state() {
+        return this._state;
+    }
+    public set state(newValue : GameState) {
+        this._state = newValue;
+        if (this.onStateChanged != undefined)
+            this.onStateChanged(newValue);
+    }
+
     public bricks : Array<Array<Brick>>;
 
     public static _defaultSettings: GameSettings =

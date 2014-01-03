@@ -7,7 +7,7 @@
     </head>
 <body id="gameElement">
     <button data-bind="click : Setup">Starta</button>
-
+    <p> Gamestate: <span data-bind="text: Global.gameStateText[State()]"></span></p>
     <table data-bind="foreach: BricksVms">
         <tr data-bind="foreach: $data">
             <td>
@@ -38,6 +38,7 @@
     <script type="text/javascript" src="Script/Core/Game.js"></script>
     <script type="text/javascript" src="Script/Core/GameSetupHelper.js"></script>
 
+    <script type="text/javascript" src="Script/Presentation/GlobalResources.js"></script>
     <script type="text/javascript" src="Script/Presentation/BrickViewModel.js"></script>
     <script type="text/javascript" src="Script/Presentation/GameViewModel.js"></script>
 
