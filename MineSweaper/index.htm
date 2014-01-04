@@ -1,26 +1,36 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <link rel="stylesheet" href="minesweeper.css"/>
-        <title>Mine Sweeper</title>
+<head>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="minesweeper.css" />
+    <link rel="stylesheet" href="Librarys/jqueryui/jquery-ui-1.10.3.custom.min.css" />
+    <title>Mine Sweeper</title>
 
-    </head>
+</head>
 <body id="gameElement">
-    <button data-bind="click : Setup">Starta</button>
-    <p> Gamestate: <span data-bind="text: Global.gameStateText[State()]"></span></p>
+    <img data-bind="attr :{src: 'Images/' + Global.gameStatusImgSrc[State()] + '.png'}, click : Setup" />
+
     <table id="gameGrid" data-bind="foreach: BricksVms">
         <tr data-bind="foreach: $data">
-            <td data-bind="click: $parents[1].handleClick, css :{'boom' : HasExploded, 'facingDown' : State() == 2}, event: { contextmenu: $parents[1].flag }">
-                <span data-bind="text: Global.brickStateText[DisplayText()]"></span>
+            <td data-bind="click: $parents[1].handleClick, css :{'boom' : HasExploded, 'flagged' : State()==1, 'facingDown' : State() == 2, 'facingUp' : State()==3}, event: { contextmenu: $parents[1].flag }">
+                <img data-bind="attr : {src : 'Images/' + DisplayText() + '.png'}"/>
             </td>
         </tr>
     </table>
+    
+    <select data-bind="options: DifficultyOptions, selectedOptions: Difficulty, optionsText: 'name', optionsValue : 'value' "></select>
+
+    <span data-bind="text: NumberOfColumn"></span> x <span data-bind="text: NumberOfRows"></span>
+
+    <div style="margin: 10px" data-bind="slider: NumberOfRows, sliderOptions: {min: 10, max: 40, range: 'min', step: 1}"></div>
+    <div style="margin: 10px" data-bind="slider: NumberOfColumn, sliderOptions: {min: 10, max: 20, range: 'min', step: 1}"></div>
 
 
     <!--   Libs -->
+    <script type="text/javascript" src="Librarys/jquery-2.0.3.js"></script>
     <script type="text/javascript" src="Librarys/knockout-3.0.0.debug.js"></script>
     <script type="text/javascript" src="Librarys/underscore.js"></script>
-    <script type="text/javascript" src="Librarys/jquery-2.0.3.js"></script>
+    <script type="text/javascript" src="Librarys/jqueryui/jquery-ui-1.10.3.custom.min.js"></script>
 
     <!-- True script classes -->
     <script type="text/javascript" src="Script/Core/ArrayExtensions.js"></script>
@@ -41,6 +51,7 @@
     <script type="text/javascript" src="Script/Presentation/GlobalResources.js"></script>
     <script type="text/javascript" src="Script/Presentation/BrickViewModel.js"></script>
     <script type="text/javascript" src="Script/Presentation/GameViewModel.js"></script>
+    <script type="text/javascript" src="Script/Presentation/knockout-custom-bindings.js"></script>
 
     <script>
         var gameVm;
@@ -51,5 +62,7 @@
         });
     </script>
 </body>
+
+
 
 </html>

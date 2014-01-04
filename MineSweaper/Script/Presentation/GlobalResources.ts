@@ -9,6 +9,14 @@ class Global {
         4: "Avslutat" 
     }
 
+    static gameStatusImgSrc = {
+        0: "sun-smile",
+        1: "sun-smile",
+        2: "sun-smile",
+        3: "sun-smile",
+        4: "sun-sad" 
+    }
+
     static brickStateText = {
         0: '',
         1: 1,

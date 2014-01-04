@@ -11,10 +11,14 @@ class GameViewModel {
 
     public NumberOfRows: KnockoutObservable<number> = ko.observable(Game._defaultSettings.size.boardWidth);
     public NumberOfColumn: KnockoutObservable<number> = ko.observable(Game._defaultSettings.size.boardHeight);
+
+    public DifficultyOptions = [{ name: "Lätt", value: GameLevel.Easy }, { name: "Medel", value: GameLevel.Medium }, { name: "Svårt", value : GameLevel.Hard }];
     public Difficulty: KnockoutObservable<GameLevel> = ko.observable(Game._defaultSettings.level);
 
+
     constructor() {
-        this.Setup = ()=> {
+
+        this.Setup = () => {
             var settings = {
                 size: {
                     boardWidth: this.NumberOfRows(),
