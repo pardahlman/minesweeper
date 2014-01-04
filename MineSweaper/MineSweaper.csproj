@@ -50,7 +50,6 @@
   <ItemGroup>
     <TypeScriptCompile Include="Jasmine\Specifications\BrickViewModelSpecifications.ts" />
     <TypeScriptCompile Include="Jasmine\Specifications\GameSetupHelperSpecifications.ts" />
-    <TypeScriptCompile Include="Jasmine\Specifications\BrickRepositorySpecifications.ts" />
     <TypeScriptCompile Include="Jasmine\Specifications\BrickFlipperSpecifications.ts" />
     <TypeScriptCompile Include="Jasmine\Specifications\GameSpecifications.ts" />
     <TypeScriptCompile Include="Librarys\typings\jquery\jquery.d.ts" />
@@ -59,7 +58,6 @@
     <TypeScriptCompile Include="Librarys\typings\jasmine\jasmine.d.ts" />
     <TypeScriptCompile Include="Script\Core\ArrayExtensions.ts" />
     <TypeScriptCompile Include="Script\Core\GameSetupHelper.ts" />
-    <TypeScriptCompile Include="Script\Core\BrickRepository.ts" />
     <TypeScriptCompile Include="Script\Core\Brick.ts" />
     <TypeScriptCompile Include="Script\Core\BrickFlipper.ts" />
     <TypeScriptCompile Include="Script\Core\BrickState.ts" />
