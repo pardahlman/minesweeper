@@ -65,9 +65,7 @@
     <TypeScriptCompile Include="Script\Core\BrickState.ts" />
     <TypeScriptCompile Include="Script\Core\BrickType.ts" />
     <TypeScriptCompile Include="Script\Core\Coordinate.ts" />
-    <TypeScriptCompile Include="Script\Core\BoardSize.ts" />
     <TypeScriptCompile Include="Script\Core\Game.ts" />
-    <TypeScriptCompile Include="Script\Core\GameLevel.ts" />
     <TypeScriptCompile Include="Script\Core\GameSettings.ts" />
     <TypeScriptCompile Include="Script\Core\GameState.ts" />
     <TypeScriptCompile Include="Script\Presentation\BrickViewModel.ts" />
