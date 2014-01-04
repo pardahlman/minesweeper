@@ -15,10 +15,10 @@ class Game {
 
     public static _defaultSettings: GameSettings =
     {
-        level: GameLevel.Medium,
+        level: GameLevel.Easy,
         size: {
-            boardWidth: 10,
-            boardHeight: 10
+            boardWidth: 15,
+            boardHeight: 20
         }
     };
 
