@@ -17,6 +17,18 @@
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Images\1.png" />
+    <Content Include="Images\2.png" />
+    <Content Include="Images\3.png" />
+    <Content Include="Images\4.png" />
+    <Content Include="Images\5.png" />
+    <Content Include="Images\6.png" />
+    <Content Include="Images\7.png" />
+    <Content Include="Images\8.png" />
+    <Content Include="Images\bomb.png" />
+    <Content Include="Images\fackingDown.png" />
+    <Content Include="Images\flagged.png" />
+    <Content Include="Images\sun.png" />
     <Content Include="Jasmine\jasmine-html.js" />
     <Content Include="Jasmine\jasmine.js" />
     <Content Include="Jasmine\Runner\jasmine.css" />
